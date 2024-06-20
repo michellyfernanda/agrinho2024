@@ -61,3 +61,27 @@ alternativas:  [
         caixaPerguntas.textContent = perguntaAtual.enunciado;
     }
     mostraPergunta()
+}
+function mostraAlternativas() {
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativa.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", => respostaSelecionada(alternativa))
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacoes = opcaoSelecionada.afirmacoes;
+    historiaFinal = afirmacoes;
+    atual++;
+    mostraPergunta();
+}
+mostraPergunta();
+fnctuion mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
+
+mostraResultado();
